@@ -1,20 +1,26 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+// App.js
+import React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import { StyleSheet } from 'react-native';
+import AuthScreenAdmin from './pages/auth/admin/AuthScreen';
+import HomeScreen from './pages/HomeScreen';
+import AddCandidateScreen from './pages/AddCandidateScreen';
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
+const Stack = createStackNavigator();
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+const App = () => {
+	return (
+		<NavigationContainer>
+			<Stack.Navigator>
+				<Stack.Screen name="AddCandidate" options={{ headerShown: false }} component={AddCandidateScreen} />
+				<Stack.Screen name="Home" options={{ headerShown: false }} component={HomeScreen} />
+				<Stack.Screen name="AuthAdmin" options={{ headerShown: false }} component={AuthScreenAdmin} />
+        {/* <Stack.Screen name="VoteCandidate" options={{ headerShown: false }} component={VoteCandidateScreen} /> */}
+			</Stack.Navigator>
+		</NavigationContainer>
+	);
+};
+
+export default App;
+// AppRegistry.registerComponent('VoteSystem', () => App);
